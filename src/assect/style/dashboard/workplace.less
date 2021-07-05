@@ -1,0 +1,205 @@
+.workplace {
+    background: #f0f2f5;
+    & > header {
+        padding: 20px;
+        margin-bottom: 16px;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        .user-autor {
+            flex: 1;
+            overflow: hidden;
+            flex-wrap: nowrap;
+            .autor {
+                width: 68px;
+                height: 68px;
+                border-radius: 50%;
+            }
+            .cell-content {
+                overflow: hidden;
+                margin: 0 24px;
+                justify-content: space-evenly;
+                h1,
+                em {
+                    font-size: 18px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                }
+                .cell-icon {
+                    margin-right: 6px;
+                }
+                em {
+                    font-size: 12px;
+                    color: rgba(0, 0, 0, 0.45);
+                }
+            }
+        }
+        .work-count-group dl {
+            align-items: center;
+            flex-wrap: nowrap;
+
+            dd {
+                margin-left: 24px;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: flex-end;
+                .title {
+                    min-width: 80px;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+                .title > .anticon {
+                    width: 26px;
+                    height: 26px;
+                    border: 1px solid;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    margin-right: 12px;
+                    & + span {
+                        color: #000000d9;
+                        font-size: 14px;
+                        font-weight: 450;
+                    }
+                }
+                &:nth-child(1) .title > .anticon {
+                    color: #096dd9;
+                    background: #e6f7ff;
+                    border-color: #91d5ff;
+                }
+                &:nth-child(2) .title > .anticon {
+                    color: #d46b08;
+                    background: #fff7e6;
+                    border-color: #ffd591;
+                }
+                &:nth-child(3) .title > .anticon {
+                    color: #389e0d;
+                    background: #f6ffed;
+                    border-color: #b7eb8f;
+                }
+                .count {
+                    font-size: 24px;
+                    font-weight: 450;
+                    color: #000000d9;
+                }
+            }
+        }
+    }
+    .card-wrap {
+        margin-bottom: 16px;
+        .icon-wrap {
+            width: 100%;
+            & .icon-item-body > a {
+                background: #fff;
+                height: 96px;
+                justify-content: space-evenly;
+                align-items: center;
+                &:hover {
+                    box-shadow: 0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;
+                    transform: scale(1.05);
+                    transition: all 0.2s ease-in-out;
+                }
+                .anticon {
+                    font-size: 30px;
+                }
+                span:last-child {
+                    font-size: 16px;
+                    font-weight: 450;
+                    color: #000;
+                }
+            }
+        }
+    }
+    .list-box {
+        width: 100%;
+        margin-bottom: 32px;
+        .list-box-item {
+            height: 400px;
+            max-height: 400px;
+            padding: 0 18px;
+            background: #fff;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            .ant-typography {
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                margin: 0;
+                border-bottom: 1px solid #f0f0f0;
+                box-sizing: border-box;
+            }
+            .list-body,
+            .ant-timeline {
+                width: 100%;
+            }
+            .list-body {
+                flex: 1;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                margin: 12px 0;
+                justify-content: space-around;
+                .progress-view {
+                    position: relative;
+                    & > .progress-icon {
+                        width: 36px;
+                        height: 36px;
+                        position: absolute;
+                        left: 50%;
+                        transform: translate(-50%, 52px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        border-radius: 50%;
+                        color: #096dd9;
+                        background: #e6f7ff;
+                        border: 1px solid #91d5ff;
+                    }
+                    .ant-progress-text {
+                        top: 60%;
+                    }
+                }
+                .text {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #32a2d4;
+                }
+            }
+        }
+        .dynamic {
+            .list-body {
+                justify-content: flex-start;
+                overflow-y: scroll;
+            }
+            .ant-timeline {
+                padding: 18px 0;
+            }
+        }
+        .task .list-body,
+        .poject .list-body {
+            justify-content: center;
+        }
+    }
+}
+
+.row-dragging {
+    background: #fafafa;
+    border: 1px solid #ccc;
+}
+
+.row-dragging td {
+    padding: 16px;
+}
+
+.row-dragging .drag-visible {
+    visibility: visible;
+}

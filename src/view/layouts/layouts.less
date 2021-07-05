@@ -1,0 +1,236 @@
+.layout {
+    display: flex;
+    flex-flow: row nowrap;
+    .ant-layout-header {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        .logo-xs {
+            min-width: 200px;
+            width: 200px;
+            justify-content: space-around;
+            & > h2 {
+                transform: translateX(0);
+            }
+        }
+        .logo-sm {
+            width: 80px;
+            justify-content: center;
+            & > h2 {
+                width: 0;
+                height: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                transform: translateX(-100%);
+            }
+        }
+        .logo {
+            max-width: 200px;
+            padding: 0 16px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            transition: all 0.3s, cubic-bezier(0.215, 0.61, 0.355, 1);
+            & > img {
+                width: 38px;
+            }
+            & > h2 {
+                margin: 0;
+                letter-spacing: 1px;
+                white-space: nowrap;
+                word-wrap: break-all;
+                color: #fff;
+            }
+        }
+        .header-box {
+            display: flex;
+            padding: 0 16px;
+            flex: 1;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.65);
+            .left,
+            .right {
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 16px;
+            }
+            dl,
+            dd {
+                margin: 0;
+            }
+            .full-text {
+                flex: auto;
+            }
+            .left > dd:nth-child(1),
+            .left > dd:nth-child(2) {
+                margin-left: 8px;
+                padding: 0 6px;
+                cursor: pointer;
+                &:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                    color: #fff;
+                }
+            }
+            .left > dd:nth-child(2) {
+                .anticon,
+                .anticon:hover {
+                    transition: transform 0.3s ease-in-out;
+                }
+                &:hover .anticon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .left > dd:last-child .ant-breadcrumb {
+                display: inline-flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                & > span,
+                span > span {
+                    display: inline-flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    white-space: nowrap;
+                }
+                .anticon-home {
+                    font-size: 16px;
+                    margin-left: 14px;
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.05);
+                        color: #fff;
+                    }
+                }
+            }
+            .right {
+                cursor: pointer;
+                dd {
+                    margin-left: 8px;
+                    padding: 0 6px;
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.05);
+                        color: #fff;
+                    }
+                }
+                dd:nth-child(4) .ant-dropdown-link {
+                    display: inline-flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    white-space: nowrap;
+                    .user-name {
+                        margin: 0 8px;
+                        font-size: 15px;
+                    }
+                    & .ant-avatar-icon {
+                        font-size: 16px;
+                        background: #6779cd;
+                    }
+                }
+            }
+        }
+        .ant-breadcrumb {
+            display: inline-block;
+            & span {
+                color: rgba(255, 255, 255, 0.65);
+            }
+        }
+    }
+    .sider {
+        z-index: 999;
+        padding-top: 64px;
+        max-width: 200px;
+        background: #001529;
+        transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+        & > .ant-layout-sider-children {
+            width: 200px;
+            position: fixed;
+            height: calc(100vh - 64px);
+            overflow-y: scroll;
+            -ms-overflow-style: none; // IE 10 +
+            overflow: -moz-scrollbars-none; // Firefox
+            &::-webkit-scrollbar {
+                width: 0 !important;
+            }
+        }
+    }
+    .min-sider > .ant-layout-sider-children {
+        width: 80px;
+    }
+    .container {
+        padding-top: 64px;
+        min-height: 100vh;
+        // position: relative;
+        overflow-y: scroll;
+        & > main.ant-layout-content {
+            padding: 16px 16px 0 16px;
+            flex: auto;
+            & > .render-container {
+                background: #fff;
+            }
+        }
+
+        & > .ant-layout-footer {
+            text-align: center;
+            color: #00000073;
+        }
+    }
+    .layout-popup {
+        display: none;
+    }
+}
+.backTop {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    background: #1088e9;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 678px) {
+    .layout {
+        .ant-layout-header {
+            .logo {
+                width: 200px;
+                display: none;
+            }
+            .header-box .left > dd:last-child .ant-breadcrumb {
+                display: none;
+            }
+        }
+        .sider {
+            position: absolute;
+            top: 64px;
+            padding: 0;
+            z-index: 9999;
+            & > .ant-layout-sider-children {
+                background: #001529;
+            }
+        }
+        .min-sider {
+            display: none;
+        }
+        .layout-popup {
+            display: block;
+            position: fixed;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 999999;
+            top: 0;
+            left: 200px;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}

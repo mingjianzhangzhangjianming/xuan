@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Suspense } from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import Layouts from '@/view/layouts/layouts'
+import Login from '@/view/login/login'
+import Nofind from '@/view/nofind/nofind'
+import { Workplace, Analysis, Monitor } from '@/components/dashboard/'
+import { Image } from 'antd'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import loading from '@/assect/images/loading.gif'
+import { connect } from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Loading extends Component {
+    constructor(props) {
+        super(props)
+        NProgress.start()
+    }
+
+    componentWillUnmount() {
+        NProgress.done()
+    }
+    render() {
+        return <Image src={loading} preview={false} />
+    }
 }
 
-export default App;
+class App extends Component {
+    render() {
+        const { isLogin } = this.props
+        return (
+            <Suspense fallback={<Loading />}>
+                <Router>
+                    {isLogin ? (
+                        <Layouts>
+                            <Switch>
+                                <Route path="/dashboard/" exact component={Workplace} />
+                                <Route path="/dashboard/workplace" component={Workplace} />
+                                <Route path="/dashboard/analysis" component={Analysis} />
+                                <Route path="/dashboard/monitor" component={Monitor} />
+                                <Route path="*" component={Nofind} />
+                            </Switch>
+                        </Layouts>
+                    ) : (
+                        <Route path="/" exact component={Login} />
+                    )}
+                </Router>
+            </Suspense>
+        )
+    }
+}
+
+export default connect(state => ({
+    isLogin: state.auth.token
+}))(App)

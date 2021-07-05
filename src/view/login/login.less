@@ -1,0 +1,41 @@
+.login-container {
+    position: relative;
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    background: url('../../assect/images/bg-login.jpg') no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    .form-list {
+        width: 480px;
+        background: #fff;
+        padding: 48px 36px;
+        box-sizing: border-box;
+        box-shadow: 0 3px 6px #00000026;
+        border-radius: 4px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    & .ant-image {
+        width: 80px;
+        cursor: pointer;
+        margin-left: 24px;
+    }
+    @media screen and(max-width: 576px) {
+        .form-list {
+            width: 320px;
+        }
+    }
+}
+.ant-row.flex-form .ant-form-item-control-input-content {
+    display: flex;
+    flex-flow: nowrap row;
+    align-items: center;
+    justify-content: space-between;
+    & > .ant-row {
+        margin: 0;
+    }
+}
