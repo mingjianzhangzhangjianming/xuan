@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import ConfigDrawer from '@/components/configDrawer/configDrawer'
 import { Layout, Menu, Breadcrumb, Badge, Avatar, Dropdown, BackTop } from 'antd'
 import {
     HomeOutlined,
@@ -17,25 +18,20 @@ import {
 import * as Icon from '@ant-design/icons'
 import logo from '@/assect/images/logo.svg'
 import './layouts.less'
+import { connect } from 'react-redux'
+import { LoginOut } from '@/store/createActions'
 
 const { Header, Sider, Content, Footer } = Layout
 const { SubMenu } = Menu
 
-const menu = (
-    <Menu>
-        <Menu.Item key="0">个人中心</Menu.Item>
-        <Menu.Item key="1">修改密码</Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">退出登录</Menu.Item>
-    </Menu>
-)
 const renderIcon = name => React.createElement(Icon[name])
 
-export default class Layouts extends Component {
+class Layouts extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            collapsed: false
+            collapsed: false,
+            visible: false
         }
     }
 
@@ -52,8 +48,35 @@ export default class Layouts extends Component {
         window.location.reload()
     }
 
+    handleMenu = e => {
+        if (e.key === '2') {
+            this.props.LoginOut(this.props.history)
+        }
+    }
+
+    alertDrawer = () => {
+        this.setState({
+            visible: true
+        })
+    }
+
+    handleClose = () => {
+        this.setState({
+            visible: false
+        })
+    }
+
     render() {
-        const { collapsed } = this.state
+        const { collapsed, visible } = this.state
+        const { menuList } = this.props
+        const menu = (
+            <Menu onClick={this.handleMenu}>
+                <Menu.Item key="0">个人中心</Menu.Item>
+                <Menu.Item key="1">修改密码</Menu.Item>
+                <Menu.Divider />
+                <Menu.Item key="2">退出登录</Menu.Item>
+            </Menu>
+        )
         return (
             <Layout className="layout">
                 <Header>
@@ -102,7 +125,7 @@ export default class Layouts extends Component {
                                 </Dropdown>
                             </dd>
                             <dd>
-                                <MoreOutlined />
+                                <MoreOutlined onClick={this.alertDrawer} />
                             </dd>
                         </dl>
                     </div>
@@ -114,7 +137,7 @@ export default class Layouts extends Component {
                     collapsed={collapsed}
                 >
                     <Menu theme="dark" mode="inline">
-                        {(JSON.parse(localStorage.getItem('menu')) || []).map(i => (
+                        {menuList.map(i => (
                             <SubMenu key={i.menuId} icon={renderIcon(i.icon)} title={i.title}>
                                 {i.children.map(j =>
                                     j.children.length ? (
@@ -133,7 +156,6 @@ export default class Layouts extends Component {
                                 )}
                             </SubMenu>
                         ))}
-                        {/* <MenuChildrenList menuList={JSON.parse(localStorage.getItem('menu')) || []} /> */}
                     </Menu>
                 </Sider>
                 <Layout className="container">
@@ -148,7 +170,16 @@ export default class Layouts extends Component {
                     <Footer>Copyright © 2021 武汉易云智科技有限公司</Footer>
                 </Layout>
                 {collapsed || <div className="layout-popup" onClick={this.closePopup}></div>}
+                {/* 侧边栏抽屉部分 */}
+                <ConfigDrawer visible={visible} Close={this.handleClose} />
             </Layout>
         )
     }
 }
+
+export default connect(
+    state => ({
+        menuList: state.auth.menu
+    }),
+    { LoginOut }
+)(withRouter(Layouts))

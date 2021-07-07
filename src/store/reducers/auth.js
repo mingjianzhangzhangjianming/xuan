@@ -1,10 +1,9 @@
 import * as TYPE from '../actionType'
-import role from '@/http/auth.json'
-const authorities = role.data.authorities.map(item => item.authority)
+
 const initState = {
     token: sessionStorage.getItem('token'),
-    menu: [],
-    authList: authorities
+    menu: JSON.parse(localStorage.getItem('menu')) || [],
+    authList: JSON.parse(localStorage.getItem('role')) || []
 }
 
 export default function auth(state = initState, action) {
@@ -12,6 +11,12 @@ export default function auth(state = initState, action) {
         case TYPE.LOGIN_SUCCES:
             sessionStorage.setItem('token', action.value)
             return { ...state, token: action.value }
+        case TYPE.SET_AUTH:
+            return { ...state, ...action.value }
+        case TYPE.LOGIN_OUT:
+            sessionStorage.removeItem('token')
+            action.history.replace('/')
+            return { ...state, token: null }
         default:
             return state
     }

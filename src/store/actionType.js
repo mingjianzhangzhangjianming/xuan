@@ -1,2 +1,5 @@
 export const LOGIN_SUCCES = 'LOGIN_SUCCES'
-export const LOGIN_FAIL = 'LOGIN_FAIL'
+
+export const SET_AUTH = 'SET_AUTH'
+
+export const LOGIN_OUT = 'LOGIN_OUT'

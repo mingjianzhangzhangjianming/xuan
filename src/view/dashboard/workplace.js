@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { userInfoMenus } from '@/http/api'
 import { Row, Col, Typography, Timeline, Progress, Table, Tag, Image } from 'antd'
 import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc'
 import arrayMove from 'array-move'
@@ -21,7 +20,6 @@ import {
     ExperimentOutlined,
     MenuOutlined
 } from '@ant-design/icons'
-import { HorizontalFormHump } from '@/utils/'
 import autor from '@/assect/images/autor.png'
 import '@/assect/style/dashboard/workplace.less'
 
@@ -278,14 +276,7 @@ const dataProject = [
 ]
 const SortableItem = sortableElement(props => <tr {...props} />)
 const SortableCon = sortableContainer(props => <tbody {...props} />)
-const deepList = list =>
-    list.map(item => {
-        item.icon = HorizontalFormHump(item.icon)
-        if (item.children.length) {
-            deepList(item.children)
-        }
-        return item
-    })
+
 export default class Workplace extends Component {
     state = {
         dataSource: dataTask
@@ -307,14 +298,6 @@ export default class Workplace extends Component {
         // function findIndex base on Table rowKey props and should always be a right array index
         const index = dataSource.findIndex(x => x.index === restProps['data-row-key'])
         return <SortableItem index={index} {...restProps} />
-    }
-
-    componentDidMount() {
-        userInfoMenus().then(res => {
-            const list = deepList(res.data)
-            console.log(list)
-            localStorage.setItem('menu', JSON.stringify(list))
-        })
     }
 
     render() {

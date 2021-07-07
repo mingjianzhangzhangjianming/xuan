@@ -1,9 +1,9 @@
 import { Component, createRef } from 'react'
-import { Captcha, login } from '@/http/api'
-import { Form, Input, Checkbox, Button, Image, message } from 'antd'
+import { Captcha } from '@/http/api'
+import { Form, Input, Checkbox, Button, Image } from 'antd'
 import './login.less'
 import { connect } from 'react-redux'
-import { SetToken } from '@/store/createActions'
+import { LoginIn } from '@/store/createActions'
 
 const initialList = {
     username: 'admin',
@@ -27,7 +27,6 @@ class Login extends Component {
         this.formRef = createRef()
     }
     componentDidMount() {
-        console.log(this.props)
         this.changeCaptcha()
     }
 
@@ -54,18 +53,9 @@ class Login extends Component {
         form.append('password', values.password)
         form.append('code', values.code)
         form.append('remember', values.remember)
-        console.log('Success:', form.values(), values)
-        login(form)
-            .then(res => {
-                message.success({ content: res?.msg })
-                const token = res?.token_type + ' ' + res?.access_token
-                sessionStorage.setItem('token', token)
-                this.props.SetToken(token)
-                this.props.history.push('/dashboard/workplace')
-            })
-            .finally(() => {
-                this.setState({ logining: false })
-            })
+        // console.log('Success:', form.values(), values)
+        const callback = () => this.setState({ logining: false })
+        this.props.LoginIn(form, this.props.history, callback)
     }
 
     onFinishFailed = errorInfo => {
@@ -76,7 +66,6 @@ class Login extends Component {
         const { logining } = this.state
         return (
             <div className="login-container">
-                <h2>{this.props.token}</h2>
                 <div className="form-list">
                     <Form
                         name="list"
@@ -132,4 +121,4 @@ class Login extends Component {
     }
 }
 
-export default connect(state => ({ ...state.auth }), { SetToken })(Login)
+export default connect(state => ({ ...state.auth }), { LoginIn })(Login)
