@@ -6,7 +6,7 @@ const errorText = {
     401: '请重新登陆',
     404: '404 nofind!',
     500: '服务器内部错误',
-    560: '数据库异常'
+    560: '数据库异常',
 }
 
 let pending = [] //声明一个数组用于存储每个请求的取消函数和axios标识
@@ -25,12 +25,12 @@ const instance = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL, // node环境的不同，对应不同的baseURL  process.env.BASE_API
     timeout: 10000, // 请求的超时时间
     headers: {
-        'Content-Type': 'application/json;charset=UTF-8' //设置默认请求头，
+        'Content-Type': 'application/json;charset=UTF-8', //设置默认请求头，
     },
     withCredentials: true, // 允许跨域请求时使用凭证
     validateStatus: status => {
         return status >= 200 && status < 300 // `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte
-    }
+    },
 })
 
 instance.interceptors.request.use(
@@ -59,12 +59,12 @@ instance.interceptors.response.use(
         if (error?.response) {
             message.info({
                 content: errorText[error.response?.status],
-                duration: 5
+                duration: 5,
             })
         } else if (!window.navigator.onLine) {
             message.error({
                 content: '无网络连接!',
-                duration: 5
+                duration: 5,
             })
         }
         return Promise.reject(error)

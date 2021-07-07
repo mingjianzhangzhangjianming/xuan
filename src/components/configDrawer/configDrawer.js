@@ -8,7 +8,7 @@ const { Option } = Select
 export default class ConfigDrawer extends Component {
     static propTypes = {
         visible: PropTypes.bool,
-        Close: PropTypes.func
+        Close: PropTypes.func,
     }
     state = {
         layoutStyle: [
@@ -16,127 +16,127 @@ export default class ConfigDrawer extends Component {
                 title: '暗色侧边栏',
                 type: 'sider',
                 checked: true,
-                color: '#001529'
+                color: '#001529',
             },
             {
                 title: '亮色侧边栏',
                 type: 'sider',
                 checked: false,
-                color: '#fff'
+                color: '#fff',
             },
             {
                 title: '亮色顶栏',
                 type: 'header',
                 checked: false,
-                color: '#fff'
+                color: '#fff',
             },
             {
                 title: '暗色顶栏',
                 type: 'header',
                 checked: true,
-                color: '#001529'
+                color: '#001529',
             },
             {
                 title: '主色顶栏',
                 type: 'header',
                 checked: false,
-                color: '#5f80c7'
-            }
+                color: '#5f80c7',
+            },
         ],
         settingColor: [
             {
                 title: '拂晓蓝',
                 color: '#1890ff',
-                checked: true
+                checked: true,
             },
             {
                 title: '薄暮',
                 color: '#5f80c7',
-                checked: false
+                checked: false,
             },
             {
                 title: '日暮',
                 color: '#faad14',
-                checked: false
+                checked: false,
             },
             {
                 title: '火山',
                 color: '#f5686f',
-                checked: false
+                checked: false,
             },
             {
                 title: '酱紫',
                 color: '#9266f9',
-                checked: false
+                checked: false,
             },
             {
                 title: '极光绿',
                 color: '#33cc99',
-                checked: false
+                checked: false,
             },
             {
                 title: '极客蓝',
                 color: '#32a2d4',
-                checked: false
+                checked: false,
             },
             {
                 title: '深红',
                 color: '#b37feb',
-                checked: false
-            }
+                checked: false,
+            },
         ],
         layoutMode: [
             {
                 title: '左侧菜单布局',
-                checked: true
+                checked: true,
             },
             {
                 title: '顶部菜单布局',
-                checked: false
+                checked: false,
             },
             {
                 title: '混合菜单布局',
-                checked: false
-            }
+                checked: false,
+            },
         ],
         otherConfig: [
             {
                 title: '固定顶栏区域',
-                checked: true
+                checked: true,
             },
             {
                 title: '固定侧栏区域',
-                checked: true
+                checked: true,
             },
             {
                 title: '固定主体区域',
-                checked: true
+                checked: true,
             },
             {
                 title: 'Logo宽度自动',
-                checked: true
+                checked: true,
             },
             {
                 title: '侧栏彩色图标',
-                checked: true
+                checked: true,
             },
             {
                 title: '侧栏排他展开',
-                checked: true
+                checked: true,
             },
             {
                 title: '开启色弱模式',
-                checked: true
+                checked: true,
             },
             {
                 title: '开启全局页脚',
-                checked: true
+                checked: true,
             },
             {
                 title: '开启多页签栏',
-                checked: true
-            }
-        ]
+                checked: true,
+            },
+        ],
     }
 
     handleSetTheme = e => {
@@ -182,14 +182,20 @@ export default class ConfigDrawer extends Component {
             if (item.title === title) item.checked = value
         })
         this.setState({
-            otherConfig
+            otherConfig,
         })
     }
     render() {
         const { layoutStyle, settingColor, layoutMode, otherConfig } = this.state
         const { visible, Close } = this.props
         return (
-            <Drawer id="right-drawer" title="整体风格设置" zIndex={10002} onClose={Close} visible={visible}>
+            <Drawer
+                id="right-drawer"
+                title="整体风格设置"
+                zIndex={10002}
+                onClose={Close}
+                visible={visible}
+            >
                 <div className="drawer-container">
                     <div className="layout-style">
                         {layoutStyle.map((item, index) => (
@@ -275,7 +281,10 @@ export default class ConfigDrawer extends Component {
                     </div>
                     <div className="footer-Sound flex-row">
                         <SoundOutlined />
-                        <p>该功能可实时预览各种布局效果, 修改后会缓存在本地, 下次打开会记忆主题配置.</p>
+                        <p>
+                            该功能可实时预览各种布局效果, 修改后会缓存在本地,
+                            下次打开会记忆主题配置.
+                        </p>
                     </div>
                 </div>
             </Drawer>
