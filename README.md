@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# xuan
+仿制 ’https://pro.eleadmin.com/dashboard/workplace‘ 的一项后台管理模板
+=======
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+>>>>>>> 40a06cfb70ee1c84a14b75cabcd223d77754e364
