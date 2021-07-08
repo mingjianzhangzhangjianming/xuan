@@ -52,11 +52,6 @@ export default class StepForm extends Component {
                             </Form.Item>
                         </Form>
                     </div>
-                    {/* <div className="steps-action">
-                        {current < steps.length - 1 && <Button type="primary">Next</Button>}
-                        {current === steps.length - 1 && <Button type="primary">Done</Button>}
-                        {current > 0 && <Button style={{ margin: '0 8px' }}>Previous</Button>}
-                    </div> */}
                 </div>
             </div>
         )
