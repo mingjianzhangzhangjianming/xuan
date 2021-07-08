@@ -1,0 +1,164 @@
+.drawer-container {
+    & > .layout-style {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        align-content: space-between;
+        .wrap {
+            width: 52px;
+            height: 36px;
+            margin-right: 16px;
+            margin-bottom: 24px;
+            position: relative;
+            border-radius: 3px;
+            box-shadow: 0 1px 4px#00000026;
+            background: #f0f2f5;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            color: #1890ff;
+            cursor: pointer;
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+            }
+            &::before {
+                width: 100%;
+                height: 10px;
+            }
+            &::after {
+                width: 14px;
+                height: 100%;
+            }
+            &:nth-child(1)::after {
+                background: #001529;
+            }
+            &:nth-child(2) {
+                margin-right: 52px;
+                &::after {
+                    background: #fff;
+                }
+            }
+            &::before {
+                background: #fff;
+            }
+            &::after {
+                background: #fff;
+            }
+            &:nth-child(3)::before {
+                background: #fff;
+            }
+            &:nth-child(4)::before {
+                background: #001529;
+                z-index: 2;
+            }
+            &:nth-child(5)::before {
+                z-index: 2;
+                background: #faad14;
+            }
+        }
+    }
+    .set-color-theme {
+        margin-top: 12px;
+        align-items: center;
+        justify-content: space-between;
+        & > .bg-color-item {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border-radius: 2px;
+            box-shadow: 0 1px 4px #00000026;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+    }
+    .setting-black {
+        margin-top: 32px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .link-to {
+        .layout-mode {
+            margin-top: 24px;
+            align-items: center;
+            justify-content: space-between;
+            & > .layout-mode-item {
+                width: 52px;
+                height: 36px;
+                margin-right: 16px;
+                margin-bottom: 24px;
+                position: relative;
+                border-radius: 3px;
+                box-shadow: 0 1px 4px#00000026;
+                background: #f0f2f5;
+                overflow: hidden;
+                align-items: center;
+                justify-content: center;
+                color: #1890ff;
+                cursor: pointer;
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    background: #fff;
+                }
+                &::before {
+                    width: 100%;
+                    height: 10px;
+                }
+                &::after {
+                    width: 14px;
+                    height: 100%;
+                }
+                &:nth-child(1)::after,
+                &:nth-child(2)::before,
+                &:nth-child(3)::after,
+                &:nth-child(3)::before {
+                    background: #001529;
+                }
+                &:nth-child(2)::before {
+                    z-index: 2;
+                }
+            }
+        }
+        .setting-layout-item {
+            margin: 18px 0;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .other-config .config-item {
+        margin: 24px 0;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .tag-fimlay {
+        width: 80px;
+    }
+    .footer-Sound {
+        margin: 12px 0;
+        font-size: 13px;
+        padding: 6px;
+        background-color: #fffbe6;
+        border: 1px solid #ffe58f;
+        align-items: center;
+        justify-content: space-between;
+        & > p {
+            margin: 0;
+            margin-left: 16px;
+        }
+    }
+    .anticon-check {
+        margin: 10px 0 0 14px;
+    }
+    /** 更新 ***/
+}
