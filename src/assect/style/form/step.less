@@ -18,10 +18,80 @@
         background: #fff;
         margin-top: 16px;
         padding: 24px;
-        & > .step-menu {
+        & > .step-menu,
+        & > .steps-content,
+        & > .confirm-play,
+        & > .accounts-success {
             max-width: 800px;
             margin: 0px auto;
-            margin-bottom: 48px;
+            margin-bottom: 30px;
+        }
+        & > .confirm-play {
+            height: auto;
+            overflow: hidden;
+        }
+        .footer-text {
+            padding: 15px 15px;
+            box-sizing: border-box;
+            background: #f0f7ff;
+            border: 1px solid #dfe5ed;
+        }
+
+        .alert-text {
+            background-color: #f0f7ff;
+            box-sizing: border-box;
+            color: #000000d9;
+            padding: 6px 15px;
+            border-radius: 2px;
+            align-items: center;
+            font-size: 14px;
+            & > p {
+                flex: 1;
+                margin: 0 8px;
+                word-wrap: break-word;
+            }
+        }
+        .hiddle-alert {
+            transform: translateY(-40px);
+            height: 0;
+            transition: all 0.48s linear;
+        }
+        .table-text,
+        .success-text {
+            margin-top: 36px;
+            dl > dd {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: #000000d9;
+                font-size: 14px;
+                margin-bottom: 16px;
+
+                h3,
+                span:last-child {
+                    margin: 0;
+                    flex: 1;
+                    text-align: left;
+                }
+                h3 {
+                    font-weight: 450;
+                }
+                span:first-child {
+                    width: 200px;
+                    text-align: right;
+                    color: #000000d9;
+                    font-size: 15px;
+                }
+                @media screen and(max-width: 578px) {
+                    span:first-child {
+                        width: auto;
+                    }
+                }
+            }
+        }
+        .success-text {
+            padding: 24px 40px;
+            background-color: #fafafa;
         }
     }
 }
