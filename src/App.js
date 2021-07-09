@@ -2,9 +2,10 @@ import React, { Component, Suspense } from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Layouts from '@/components/layouts/layouts'
 import Login from '@/components/login/login'
-import Nofind from '@/components/nofind/nofind'
 import { Workplace, Analysis, Monitor } from '@/view/dashboard'
 import { BasicForm, AdvancForm, StepForm } from '@/view/form'
+import { Success, Fail } from '@/view/result'
+import { Exep403, Exep404, Exep500 } from '@/view/exception'
 import { Image } from 'antd'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -42,7 +43,14 @@ class App extends Component {
                                 <Route path="/form/basic" component={BasicForm} />
                                 <Route path="/form/advanced" component={AdvancForm} />
                                 <Route path="/form/step" component={StepForm} />
-                                <Route path="*" component={Nofind} />
+                                <Route path="/result/" exact component={Success} />
+                                <Route path="/result/success" component={Success} />
+                                <Route path="/result/fail" component={Fail} />
+                                <Route path="/exception/" exact component={Exep403} />
+                                <Route path="/exception/403" component={Exep403} />
+                                <Route path="/exception/404" component={Exep404} />
+                                <Route path="/exception/500" component={Exep500} />
+                                <Route path="*" component={Exep404} />
                             </Switch>
                         </Layouts>
                     ) : (
